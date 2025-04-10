@@ -42,14 +42,55 @@
         button:hover {
             background-color: #ff4c4c;
         }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .popup h2 {
+            color: #ff6b6b;
+        }
+        .popup button {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>💖 Anh yêu em 💖</h1>
         <p>Em có đồng ý làm người yêu anh không?</p>
-        <button onclick="alert('Anh biết mà! Anh yêu em nhiều lắm! 💕')">Đồng ý</button>
-        <button onclick="alert('Không sao, anh sẽ chờ em! 😢')">Không đồng ý</button>
+        <button onclick="showPopup(true)">Đồng ý</button>
+        <button onclick="showPopup(false)">Không đồng ý</button>
     </div>
+
+    <div id="popup" class="popup">
+        <h2 id="popupMessage"></h2>
+        <button onclick="closePopup()">Đóng</button>
+    </div>
+
+    <script>
+        function showPopup(isAccepted) {
+            const popup = document.getElementById('popup');
+            const message = document.getElementById('popupMessage');
+            if (isAccepted) {
+                message.textContent = 'Anh biết mà! Anh yêu em nhiều lắm! 💕';
+            } else {
+                message.textContent = 'Không sao, anh sẽ chờ em! 😢';
+            }
+            popup.style.display = 'block';
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
