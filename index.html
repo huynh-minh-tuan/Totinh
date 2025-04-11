@@ -1,96 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tỏ Tình</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
-            text-align: center;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: white;
-            padding: 20px 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        h1 {
-            color: #ff6b6b;
-        }
-        p {
-            font-size: 18px;
-        }
-        button {
-            background-color: #ff6b6b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #ff4c4c;
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        .popup h2 {
-            color: #ff6b6b;
-        }
-        .popup button {
-            margin-top: 10px;
-        }
-    </style>
+    <title>Tình Yêu Theo Dòng Thời Gian</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <canvas id="heartCanvas"></canvas>
+    <!-- Add icons for dark mode, snow mode, and info -->
+    <div class="icon-container">
+        <span id="darkModeIcon" class="icon">🌙</span>
+        <span id="snowModeIcon" class="icon">❄️</span>
+        <span id="infoIcon" class="icon">❓</span>
+    </div>
     <div class="container">
-        <h1>💖 Anh yêu em 💖</h1>
-        <p>Em có đồng ý làm người yêu anh không?</p>
-        <button onclick="showPopup(true)">Đồng ý</button>
-        <button onclick="showPopup(false)">Không đồng ý</button>
+        <h1 id="title">Tình Yêu Theo Dòng Thời Gian</h1>
+        <div class="timeline" id="timeline"></div>
+        <div style="margin-top: 50px;">
+            <a href="https://example.com" class="link-button">Khám phá thêm</a>
+        </div>
     </div>
-
-    <div id="popup" class="popup">
-        <h2 id="popupMessage"></h2>
-        <button onclick="closePopup()">Đóng</button>
+    <!-- Modal dialog for info icon -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <!-- Add glowing corners -->
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
+            <p>Thông báo: Thân phận lần này là điệp viên, xin ký chủ chuẩn bị sẵn sàng!</p>
+            <a href="/hethong.html" class="link-button">Sẵn sàng</a>
+        </div>
     </div>
-
-    <script>
-        function showPopup(isAccepted) {
-            const popup = document.getElementById('popup');
-            const message = document.getElementById('popupMessage');
-            if (isAccepted) {
-                message.textContent = 'Anh biết mà! Anh yêu em nhiều lắm! 💕';
-            } else {
-                message.textContent = 'Không sao, anh sẽ chờ em! 😢';
-            }
-            popup.style.display = 'block';
-        }
-
-        function closePopup() {
-            const popup = document.getElementById('popup');
-            popup.style.display = 'none';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

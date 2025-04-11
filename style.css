@@ -1,0 +1,430 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #1a1a3d, #4b2e5a, #1f2d54);  
+    color: #fff;
+    overflow-x: hidden;
+    position: relative;
+}
+
+#heartCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #ffccd5;
+    text-shadow: 0 0 10px #ff8091;
+    margin-bottom: 50px;
+    letter-spacing: 8px;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background: #ff8091;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.timeline-item {
+    padding: 20px 40px;
+    position: relative;
+    width: 40%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+    box-sizing: border-box;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: left;
+}
+
+.timeline-item.right {
+    left: 60%;
+    text-align: left;
+}
+
+.content {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    overflow: hidden; /* Đảm bảo ảnh không vượt ra ngoài */
+}
+
+.content:hover {
+    transform: scale(1.05);
+}
+
+.content h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #ffccd5;
+    margin: 0px;
+    
+}
+
+.content p {
+    font-size: 16px;
+    color: #fff;
+}
+
+.content img {
+    max-width: 100%; /* Giới hạn kích thước tối đa của ảnh */
+    border-radius: 10px;
+    margin-top: 15px;
+    border: 2px solid #ff8091;
+    transition: transform 0.3s ease;
+    display: block; /* Đảm bảo ảnh không bị lệch */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+.content img:hover {
+    transform: scale(1.1);
+}
+
+/* Điểm tròn trên timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse 1.5s infinite;
+}
+
+.timeline-item.left::before {
+    right: -53px;
+}
+
+.timeline-item.right::before {
+    left: -53px;
+}
+
+/* Hiệu ứng nhấp nháy */
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 5px #ff4d6d;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+        box-shadow: 0 0 15px #ff4d6d;
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 5px #ff4d6d;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .timeline::after {
+        left: 30px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+    }
+
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item.left::before,
+    .timeline-item.right::before {
+        left: 17px;
+        right: auto;
+    }
+}
+
+/* Style for the link button */
+.link-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-family: 'Dancing Script', cursive;
+    color: #fff;
+    background: #ff8091;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.link-button:hover {
+    background: #ff4d6d;
+    transform: scale(1.1);
+}
+
+/* Adjust icon container for top-right corner */
+.icon-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.icon {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Enhanced futuristic modal styles with glowing corners */
+.modal-content {
+    background: linear-gradient(135deg, #1a1a3d, #4b2e5a);
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    color: #00ffff;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+    position: relative;
+    animation: scaleUp 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.modal-content::before,
+.modal-content::after {
+    content: '';
+    position: absolute;
+    border: 2px solid transparent;
+    border-image: linear-gradient(90deg, #00ffff, rgba(0, 0, 0, 0)) 1;
+    border-radius: 15px;
+    pointer-events: none;
+    animation: segmentedGlow 2s infinite linear;
+}
+
+.modal-content::before {
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+}
+
+.modal-content::after {
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+}
+
+/* Add glowing corner elements */
+.modal-content .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #00ffff, transparent);
+    animation: cornerGlow 1.5s infinite alternate;
+}
+
+.modal-content .corner.top-left {
+    top: -10px;
+    left: -10px;
+    border-top-left-radius: 15px;
+}
+
+.modal-content .corner.top-right {
+    top: -10px;
+    right: -10px;
+    border-top-right-radius: 15px;
+}
+
+.modal-content .corner.bottom-left {
+    bottom: -10px;
+    left: -10px;
+    border-bottom-left-radius: 15px;
+}
+
+.modal-content .corner.bottom-right {
+    bottom: -10px;
+    right: -10px;
+    border-bottom-right-radius: 15px;
+}
+
+@keyframes cornerGlow {
+    0% {
+        box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+    100% {
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+    }
+}
+
+@keyframes segmentedGlow {
+    0% {
+        border-image-source: linear-gradient(90deg, #00ffff, rgba(0, 0, 0, 0));
+    }
+    50% {
+        border-image-source: linear-gradient(180deg, #00ffff, rgba(0, 0, 0, 0));
+    }
+    100% {
+        border-image-source: linear-gradient(270deg, #00ffff, rgba(0, 0, 0, 0));
+    }
+}
+
+.modal-content p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.modal-content .link-button {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #00ffff;
+    color: #000;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+.modal-content .link-button:hover {
+    background: #00cccc;
+    transform: scale(1.1);
+}
+
+/* Dark theme adjustments */
+body.dark-theme {
+    background: linear-gradient(to bottom, #01052a, #092c4c);
+    color: #fff;
+}
+
+body.dark-theme h1 {
+    color: #ffd700; /* Gold color */
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+    animation: glow 1.5s infinite alternate;
+}
+
+body.dark-theme h2 {
+    color: #ffcc00; /* Bright yellow for headings */
+}
+
+body.dark-theme p {
+    color: #d1d1d1; /* Light gray for paragraphs */
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+    }
+    100% {
+        text-shadow: 0 0 20px #ffea00, 0 0 30px #ffea00, 0 0 40px #ffea00;
+    }
+}
+
+/* Snow theme adjustments */
+body.snow-theme {
+    background: linear-gradient(to bottom, #e0eafc, #cfdef3);
+    color: #333;
+}
+
+body.snow-theme h1 {
+    color: #8e1f1f; /* Deep red */
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+    animation: smoke 3s infinite;
+}
+
+body.snow-theme h2 {
+    color: #4f4f4f; /* Dark gray for headings */
+}
+
+body.snow-theme p {
+    color: #5a5a5a; /* Medium gray for paragraphs */
+}
+
+@keyframes smoke {
+    0% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+        transform: translateY(0);
+    }
+    50% {
+        text-shadow: 0 0 15px #ffffff, 0 0 25px #ffffff;
+        transform: translateY(-5px);
+    }
+    100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+        transform: translateY(0);
+    }
+}

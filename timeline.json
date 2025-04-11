@@ -1,0 +1,74 @@
+[
+    {
+        "date": "10/04/2023",
+        "title": "Ngày đầu gặp em",
+        "description": "Lần đầu tiên anh thấy em trong quán cà phê, tim anh như ngừng đập.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop",
+        "side": "left",
+        "imageWidth": "200px",  
+        "imageHeight": "120px"
+    },
+    {
+        "date": "20/05/2023",
+        "title": "Lần đầu hẹn hò",
+        "description": "Mình cùng xem phim và ăn tối dưới ánh đèn lung linh.",
+        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1470&auto=format&fit=crop",
+        "side": "right",
+        "imageWidth": "250px",
+        "imageHeight": "150px"
+    },
+    {
+        "date": "15/08/2023",
+        "title": "Ngày tỏ tình",
+        "description": "Anh đã nói \"Anh yêu em\" dưới bầu trời đầy sao.",
+        "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1470&auto=format&fit=crop",
+        "side": "left",
+        "imageWidth": "200px",
+        "imageHeight": "120px"
+    },
+    {
+        "date": "10/04/2024",
+        "title": "Kỷ niệm 1 năm",
+        "description": "Chúng ta cùng nhau vượt qua bao khó khăn, tình yêu ngày càng sâu đậm.",
+        "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop",
+        "side": "right",
+        "imageWidth": "250px",
+        "imageHeight": "150px"
+    },
+    {
+        "date": "10/04/2023",
+        "title": "Ngày đầu gặp em",
+        "description": "Lần đầu tiên anh thấy em trong quán cà phê, tim anh như ngừng đập.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1473&auto=format&fit=crop",
+        "side": "left",
+        "imageWidth": "200px",  
+        "imageHeight": "120px"
+    },
+    {
+        "date": "20/05/2023",
+        "title": "Lần đầu hẹn hò",
+        "description": "Mình cùng xem phim và ăn tối dưới ánh đèn lung linh.",
+        "image": "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1470&auto=format&fit=crop",
+        "side": "right",
+        "imageWidth": "250px",
+        "imageHeight": "150px"
+    },
+    {
+        "date": "15/08/2023",
+        "title": "Ngày tỏ tình",
+        "description": "Anh đã nói \"Anh yêu em\" dưới bầu trời đầy sao.",
+        "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?q=80&w=1470&auto=format&fit=crop",
+        "side": "left",
+        "imageWidth": "200px",
+        "imageHeight": "120px"
+    },
+    {
+        "date": "10/04/2024",
+        "title": "Kỷ niệm 1 năm",
+        "description": "Chúng ta cùng nhau vượt qua bao khó khăn, tình yêu ngày càng sâu đậm.",
+        "image": "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1470&auto=format&fit=crop",
+        "side": "right",
+        "imageWidth": "250px",
+        "imageHeight": "150px"
+    }
+]
